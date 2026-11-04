@@ -22,7 +22,7 @@ Sitio estático sin framework ni proceso de compilación:
 - HTML5 (`index.html`)
 - CSS con variables personalizadas (`css/styles.css`)
 - JavaScript puro (`js/main.js`) para la galería tipo *lightbox* y el resaltado de navegación al hacer scroll
-- Tipografías [Playfair Display](https://fonts.google.com/specimen/Playfair+Display) y [Source Sans 3](https://fonts.google.com/specimen/Source+Sans+3) (Google Fonts)
+- Tipografía [Open Sans](https://fonts.google.com/specimen/Open+Sans) (Google Fonts), según la ficha técnica de marca
 - Imágenes en formato `.webp`
 
 ## Estructura

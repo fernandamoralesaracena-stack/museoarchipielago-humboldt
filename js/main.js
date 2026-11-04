@@ -45,7 +45,7 @@ const observer = new IntersectionObserver((entries) => {
     if (entry.isIntersecting) {
       navLinks.forEach(a => {
         a.style.color = a.getAttribute('href') === '#' + entry.target.id
-          ? '#2cb8a0' : '';
+          ? '#FFBD59' : '';
       });
     }
   });
