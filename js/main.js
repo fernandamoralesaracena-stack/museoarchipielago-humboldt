@@ -38,6 +38,24 @@ document.querySelectorAll('#quienes-somos video').forEach(v => {
   v.addEventListener('ended', () => v.load());
 });
 
+// Aparición al hacer scroll: añade .is-visible a los elementos .reveal
+// cuando asoman en pantalla. Si el sistema pide menos movimiento, se
+// marcan todos como visibles de entrada y no se observa nada.
+const revealEls = document.querySelectorAll('.reveal');
+if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  revealEls.forEach(el => el.classList.add('is-visible'));
+} else {
+  const revealObserver = new IntersectionObserver((entries, obs) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        obs.unobserve(entry.target); // una sola vez: no reaparece al volver
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+  revealEls.forEach(el => revealObserver.observe(el));
+}
+
 const sections = document.querySelectorAll('section[id]');
 const navLinks = document.querySelectorAll('.nav-links a');
 const observer = new IntersectionObserver((entries) => {
