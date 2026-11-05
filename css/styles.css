@@ -1008,3 +1008,37 @@ footer p {
   padding-top: 34px;
   padding-bottom: 34px;
 }
+
+/* ===== SECCIONES OSCURAS: elementos que antes solo existían en claro ===== */
+.section-alt .activities-list li {
+  background: rgba(255,255,255,0.05);
+  box-shadow: none;
+  border: 1px solid rgba(255,255,255,0.08);
+}
+
+.section-alt .act-num {
+  background: var(--seafoam);
+  color: var(--deep);
+}
+
+.section-alt .act-text strong { color: var(--white); }
+.section-alt .act-text span { color: rgba(255,255,255,0.68); }
+
+.section-alt .impact-grid { background: rgba(255,255,255,0.09); }
+
+.section-alt .impact-item { background: var(--deep); }
+.section-alt .impact-label { color: var(--white); }
+.section-alt .impact-desc { color: rgba(255,255,255,0.68); }
+.section-alt .impact-icon svg { color: var(--seafoam); }
+
+.section-alt .gallery-item { border: 1px solid rgba(255,255,255,0.08); }
+
+/* El video sobre fondo oscuro no necesita la sombra clara */
+.section-alt .video-wrap { box-shadow: 0 8px 32px rgba(0,0,0,0.35); }
+
+/* Separación entre dos secciones oscuras seguidas: una línea tenue
+   en vez del corte duro que deja el mismo color de fondo */
+.section-alt + .section-alt { border-top: 1px solid rgba(255,255,255,0.07); }
+
+/* El divisor de ola iba de oscuro a claro; entre oscuras, sobra */
+.section-alt + .wave-divider { display: none; }
