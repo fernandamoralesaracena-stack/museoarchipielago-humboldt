@@ -38,6 +38,32 @@ document.querySelectorAll('#quienes-somos video').forEach(v => {
   v.addEventListener('ended', () => v.load());
 });
 
+// Secciones plegables: el h2 es un botón que abre y cierra su .section-body.
+// El contenido sigue en el DOM aunque esté cerrado (buscadores y Ctrl+F lo
+// ven); solo cambia el alto. Al abrir, se marcan visibles los .reveal de
+// dentro, porque el observador no los detecta mientras están colapsados.
+document.querySelectorAll('.section-toggle').forEach(btn => {
+  const body = document.getElementById(btn.getAttribute('aria-controls'));
+  if (!body) return;
+  btn.addEventListener('click', () => {
+    const abrir = btn.getAttribute('aria-expanded') !== 'true';
+    btn.setAttribute('aria-expanded', String(abrir));
+    body.classList.toggle('is-open', abrir);
+    if (abrir) {
+      body.querySelectorAll('.reveal').forEach(el => el.classList.add('is-visible'));
+    }
+  });
+});
+
+// Un enlace del menú hacia una sección cerrada la abre antes de saltar
+document.querySelectorAll('.nav-links a[href^="#"], a.hero-cta[href^="#"]').forEach(a => {
+  a.addEventListener('click', () => {
+    const destino = document.querySelector(a.getAttribute('href'));
+    const btn = destino && destino.querySelector('.section-toggle');
+    if (btn && btn.getAttribute('aria-expanded') !== 'true') btn.click();
+  });
+});
+
 // Aparición al hacer scroll: añade .is-visible a los elementos .reveal
 // cuando asoman en pantalla. Si el sistema pide menos movimiento, se
 // marcan todos como visibles de entrada y no se observa nada.

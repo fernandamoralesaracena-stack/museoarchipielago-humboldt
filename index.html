@@ -84,38 +84,61 @@
       <p class="hero-eyebrow">Chungungo · La Higuera · Región de Coquimbo</p>
       <h1>Ciencia, arte y comunidad alrededor del <em>Archipiélago de Humboldt</em></h1>
       <p class="hero-desc">Uno de los ecosistemas marinos más ricos del Pacífico Sur, frente a la costa de Coquimbo. Y una fundación que quiere construir ahí un museo de arte.</p>
-      <a class="hero-cta" href="#importancia">
-        Conoce el Archipiélago
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-      </a>
+      <div class="hero-actions">
+        <a class="hero-cta" href="https://fundacionmuseo.donando.cl/" target="_blank" rel="noopener noreferrer">
+          Hazte socio
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <a class="hero-cta hero-cta--ghost" href="#importancia">Conoce el Archipiélago</a>
+      </div>
     </div>
     <div class="scroll-hint">
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
     </div>
   </section>
 
+  <!-- FRANJA DE DONACIÓN -->
+  <aside class="donate-strip">
+    <div class="container donate-strip-inner">
+      <p class="donate-strip-text"><strong>El museo se construye con aportes.</strong> Hazte socio desde cualquier monto y financia su construcción y el trabajo de conservación en el archipiélago.</p>
+      <a class="donate-strip-cta" href="https://fundacionmuseo.donando.cl/" target="_blank" rel="noopener noreferrer">
+        Aportar
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+  </aside>
+
   <!-- IMPORTANCIA -->
   <section class="section" id="importancia">
     <div class="container">
-      <span class="section-label reveal">El territorio</span>
-      <h2 class="reveal">Por qué importa el Archipiélago</h2>
+      <span class="section-label">El territorio</span>
+      <h2 class="section-h2">
+        <button type="button" class="section-toggle" aria-expanded="true" aria-controls="cuerpo-importancia">
+          <span>Por qué importa el Archipiélago</span>
+          <svg class="section-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+      </h2>
+      <div class="section-body is-open" id="cuerpo-importancia">
+        <div class="section-body-inner">
       <p class="section-intro reveal">Es uno de los ecosistemas marino-costeros más biodiversos del Pacífico Sur. Tres razones.</p>
       <div class="cards">
         <div class="reveal card">
-          <div class="card-icon">🌊</div>
+          <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 7c2.5 0 2.5 2 5 2s2.5-2 5-2 2.5 2 5 2 2.5-2 5-2"/><path d="M2 13c2.5 0 2.5 2 5 2s2.5-2 5-2 2.5 2 5 2 2.5-2 5-2"/><path d="M2 19c2.5 0 2.5 2 5 2s2.5-2 5-2 2.5 2 5 2 2.5-2 5-2"/></svg></div>
           <h3>Reservorio de biodiversidad</h3>
           <p>Especies endémicas y redes tróficas que sostienen la pesca artesanal de la zona.</p>
         </div>
         <div class="reveal reveal-delay-1 card">
-          <div class="card-icon">🌡️</div>
+          <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 14.76V5a2 2 0 1 0-4 0v9.76a4 4 0 1 0 4 0z"/><path d="M12 9v6"/></svg></div>
           <h3>Regulación climática</h3>
           <p>La corriente de Humboldt trae aguas frías y nutrientes: alta productividad primaria y un océano más sano.</p>
         </div>
         <div class="reveal reveal-delay-2 card">
-          <div class="card-icon">🔬</div>
+          <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 18h12"/><path d="M9 18a5 5 0 0 1 2-9.5"/><path d="M11 3h3l1 5h-5z"/><path d="M14 8a5 5 0 0 1 1 9"/><path d="M4 21h16"/></svg></div>
           <h3>Valor científico y cultural</h3>
           <p>Laboratorio natural para la investigación marina y territorio habitado por comunidades costeras desde hace generaciones.</p>
         </div>
+      </div>
+    </div>
       </div>
     </div>
   </section>
@@ -130,8 +153,15 @@
   <!-- QUIÉNES SOMOS -->
   <section class="section" id="quienes-somos">
     <div class="container">
-      <span class="section-label reveal">La Fundación</span>
-      <h2 class="reveal">Quiénes somos</h2>
+      <span class="section-label">La Fundación</span>
+      <h2 class="section-h2">
+        <button type="button" class="section-toggle" aria-expanded="false" aria-controls="cuerpo-quienes-somos">
+          <span>Quiénes somos</span>
+          <svg class="section-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+      </h2>
+      <div class="section-body" id="cuerpo-quienes-somos">
+        <div class="section-body-inner">
       <p class="section-intro reveal">La Fundación Archipiélago de Humboldt trabaja para proteger este ecosistema y para levantar en Chungungo un museo de arte inspirado en él. El museo todavía no existe: estamos construyéndolo.</p>
 
       <div class="video-wrap reveal">
@@ -147,30 +177,41 @@
         </video>
       </div>
     </div>
+      </div>
+    </div>
   </section>
 
   <!-- ARTE Y CONSERVACIÓN -->
   <section class="section section-alt" id="arte">
     <div class="container">
-      <span class="section-label reveal">Arte & Ciencia</span>
-      <h2 class="reveal">Por qué un museo de arte</h2>
+      <span class="section-label">Arte & Ciencia</span>
+      <h2 class="section-h2">
+        <button type="button" class="section-toggle" aria-expanded="false" aria-controls="cuerpo-arte">
+          <span>Por qué un museo de arte</span>
+          <svg class="section-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+      </h2>
+      <div class="section-body" id="cuerpo-arte">
+        <div class="section-body-inner">
       <p class="section-intro reveal">Los datos científicos informan; el arte mueve. Un museo convierte lo que sabemos del archipiélago en algo que se siente.</p>
       <div class="cards">
         <div class="reveal card">
-          <div class="card-icon">🎨</div>
+          <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21c2 0 4-1 4-4 0-1.7-1.3-3-3-3-1.5 0-3 1-3 3 0 2 1 4 2 4z"/><path d="M7 14 18.5 2.5a2.1 2.1 0 0 1 3 3L10 17"/></svg></div>
           <h3>El arte como puente</h3>
           <p>Instalaciones y obras participativas hacen comprensibles procesos ecológicos complejos, a cualquier edad.</p>
         </div>
         <div class="reveal reveal-delay-1 card">
-          <div class="card-icon">⚠️</div>
+          <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg></div>
           <h3>Visibilizar amenazas</h3>
           <p>La sobrepesca y el cambio climático se vuelven visibles, junto a las prácticas que los enfrentan.</p>
         </div>
         <div class="reveal reveal-delay-2 card">
-          <div class="card-icon">🏘️</div>
+          <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21V11l5-4 5 4v10"/><path d="M13 21V13l4-3 4 3v8"/><path d="M3 21h18"/><path d="M8 21v-4"/></svg></div>
           <h3>Impulso a la economía local</h3>
           <p>Visitantes y residencias artísticas abren trabajo para artesanos, pescadores y guías de Chungungo.</p>
         </div>
+      </div>
+    </div>
       </div>
     </div>
   </section>
@@ -178,8 +219,15 @@
   <!-- GALERÍA -->
   <section class="section" id="galeria">
     <div class="container">
-      <span class="section-label reveal">Flora y Fauna</span>
-      <h2 class="reveal">Biodiversidad del Archipiélago</h2>
+      <span class="section-label">Flora y Fauna</span>
+      <h2 class="section-h2">
+        <button type="button" class="section-toggle" aria-expanded="false" aria-controls="cuerpo-galeria">
+          <span>Biodiversidad del Archipiélago</span>
+          <svg class="section-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+      </h2>
+      <div class="section-body" id="cuerpo-galeria">
+        <div class="section-body-inner">
       <p class="section-intro reveal">Pingüinos de Humboldt, lobos marinos, chungungos, delfines y ballenas. Fotografías tomadas en el archipiélago y su costa.</p>
 
       <div class="gallery-grid">
@@ -228,6 +276,8 @@
         </div>
       </div>
     </div>
+      </div>
+    </div>
   </section>
 
   <!-- LIGHTBOX -->
@@ -239,26 +289,35 @@
   <!-- IMPACTO -->
   <section class="section section--light" id="impacto">
     <div class="container">
-      <span class="section-label reveal">Para quiénes</span>
-      <h2 class="reveal">A quiénes queremos llegar</h2>
+      <span class="section-label">Para quiénes</span>
+      <h2 class="section-h2">
+        <button type="button" class="section-toggle" aria-expanded="false" aria-controls="cuerpo-impacto">
+          <span>A quiénes queremos llegar</span>
+          <svg class="section-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+      </h2>
+      <div class="section-body" id="cuerpo-impacto">
+        <div class="section-body-inner">
       <p class="section-intro reveal">El museo está pensado como punto de encuentro entre tres grupos.</p>
 
       <div class="impact-grid">
         <div class="impact-item reveal">
-          <div class="impact-icon">🎓</div>
+          <div class="impact-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 1 8l11 5 11-5-11-5z"/><path d="M5 10.5V16c0 1.7 3.1 3 7 3s7-1.3 7-3v-5.5"/></svg></div>
           <div class="impact-label">Estudiantes</div>
           <div class="impact-desc">Talleres de ciencias marinas, conservación y artes para colegios de la región.</div>
         </div>
         <div class="impact-item reveal">
-          <div class="impact-icon">🤝</div>
+          <div class="impact-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 7a3 3 0 1 1 6 0v6"/><path d="M12 7a3 3 0 1 0-6 0v6"/><path d="M6 13a3 3 0 0 0 6 0 3 3 0 0 0 6 0"/><path d="M3 21h18"/></svg></div>
           <div class="impact-label">Comunidad</div>
           <div class="impact-desc">Un lugar donde los saberes locales se comparten y se deciden cosas sobre el territorio.</div>
         </div>
         <div class="impact-item reveal">
-          <div class="impact-icon">🧭</div>
+          <div class="impact-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m15.5 8.5-2 5-5 2 2-5z"/></svg></div>
           <div class="impact-label">Turistas</div>
           <div class="impact-desc">Una puerta de entrada al archipiélago que no lo dañe al mostrarlo.</div>
         </div>
+      </div>
+    </div>
       </div>
     </div>
   </section>
@@ -266,59 +325,54 @@
   <!-- ACTIVIDADES -->
   <section class="section" id="actividades">
     <div class="container">
-      <span class="section-label reveal">En proyecto</span>
-      <h2 class="reveal">Qué habrá en el museo</h2>
-      <p class="section-intro reveal">Cinco líneas de trabajo que queremos poner en pie. Ninguna está funcionando todavía.</p>
+      <span class="section-label">En proyecto</span>
+      <h2 class="section-h2">
+        <button type="button" class="section-toggle" aria-expanded="false" aria-controls="cuerpo-actividades">
+          <span>Qué habrá en el museo</span>
+          <svg class="section-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+      </h2>
+      <div class="section-body" id="cuerpo-actividades">
+        <div class="section-body-inner">
+      <p class="section-intro reveal">Tres líneas de trabajo que queremos poner en pie. Ninguna está funcionando todavía.</p>
       <ul class="activities-list">
         <li class="reveal">
           <div class="act-num">1</div>
           <div class="act-text">
-            <strong>Exposiciones interactivas</strong>
-            <span>Instalaciones multisensoriales sobre la biodiversidad marina del archipiélago.</span>
+            <strong>Exposiciones de arte</strong>
+            <span>Obras inspiradas en el archipiélago y su ecosistema.</span>
           </div>
         </li>
         <li class="reveal reveal-delay-1">
           <div class="act-num">2</div>
           <div class="act-text">
-            <strong>Talleres educativos</strong>
-            <span>Para escolares y familias: conservación, ecología y pesca artesanal.</span>
+            <strong>Talleres vinculados a otros actores sociales</strong>
+            <span>Instancias de trabajo con la comunidad de la zona.</span>
           </div>
         </li>
         <li class="reveal reveal-delay-2">
           <div class="act-num">3</div>
           <div class="act-text">
-            <strong>Residencias artísticas</strong>
-            <span>Artistas de Chile y de fuera, trabajando sobre arte y naturaleza.</span>
-          </div>
-        </li>
-        <li class="reveal">
-          <div class="act-num">4</div>
-          <div class="act-text">
-            <strong>Investigación participativa</strong>
-            <span>Ciencia ciudadana para monitorear la fauna del Área Marina Protegida.</span>
-          </div>
-        </li>
-        <li class="reveal reveal-delay-1">
-          <div class="act-num">5</div>
-          <div class="act-text">
-            <strong>Rutas interpretativas guiadas</strong>
-            <span>Islotes, puntos de avistamiento y senderos costeros, con guías locales.</span>
+            <strong>La primera estación meteorológica de Chungungo</strong>
+            <span>Datos propios del clima en esta localidad de la comuna de La Higuera.</span>
           </div>
         </li>
       </ul>
+    </div>
+      </div>
     </div>
   </section>
 
   <!-- VISITA -->
   <section class="section section--visit" id="visita">
     <div class="container">
-      <span class="section-label reveal">Cómo apoyar</span>
+      <span class="section-label">Cómo apoyar</span>
       <h2 class="reveal">Ayúdanos a construirlo</h2>
       <p class="section-intro reveal">El museo se levanta con aportes de quienes se interesan por este ecosistema. Puedes ser uno.</p>
 
       <div class="support-banner reveal">
         <div class="support-text">
-          <h3>💚 Hazte socio</h3>
+          <h3>Hazte socio</h3>
           <p>Un aporte mensual o por una vez financia el museo y el trabajo de conservación en el archipiélago.</p>
         </div>
         <a class="support-cta" href="https://fundacionmuseo.donando.cl/" target="_blank" rel="noopener noreferrer">
@@ -329,7 +383,7 @@
 
       <div class="visit-grid">
         <div class="visit-card reveal">
-          <h3>📍 Dónde será</h3>
+          <h3>Dónde será</h3>
           <address>
             <p><strong>Ubicación</strong><br>Chungungo, comuna de La Higuera<br>Región de Coquimbo, Chile</p>
             <br>
@@ -344,7 +398,7 @@
           </div>
         </div>
         <div class="visit-card reveal">
-          <h3>✉️ Contáctanos</h3>
+          <h3>Contáctanos</h3>
           <p>Dudas, colaboraciones, programas educativos o residencias artísticas:</p>
           <br>
           <a href="mailto:contacto@museoarchipielagodehumboldt.cl" class="contact-link">
