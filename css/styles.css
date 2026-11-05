@@ -1046,3 +1046,109 @@ footer p {
 
 /* El divisor de ola iba de oscuro a claro; entre oscuras, sobra */
 .section-alt + .wave-divider { display: none; }
+
+/* ===== VIDEO VERTICAL ===== */
+.video-vertical {
+  max-width: 340px;
+  margin: 28px auto 0;
+}
+
+.video-vertical video {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 9 / 16;
+  background: #000;
+  border-radius: 10px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.35);
+}
+
+.video-pie {
+  margin-top: 10px;
+  text-align: center;
+  font-size: 13px;
+  color: rgba(255,255,255,0.6);
+}
+
+/* ===== CARRUSEL DE LA GALERÍA ===== */
+.carousel {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* La pista se desplaza en horizontal con anclaje; cada foto es una
+   diapositiva. Sin JS sigue funcionando: se arrastra con el dedo. */
+.carousel .gallery-grid {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: calc((100% - 32px) / 3);
+  gap: 16px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  padding-bottom: 6px;
+  scrollbar-width: none;
+}
+
+.carousel .gallery-grid::-webkit-scrollbar { display: none; }
+
+.carousel .gallery-item {
+  scroll-snap-align: start;
+  aspect-ratio: 4 / 3;
+}
+
+.carousel-nav {
+  flex-shrink: 0;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.22);
+  background: rgba(255,255,255,0.08);
+  color: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.2s, opacity 0.2s, border-color 0.2s;
+}
+
+.carousel-nav:hover {
+  background: var(--seafoam);
+  border-color: var(--seafoam);
+  color: var(--deep);
+}
+
+.carousel-nav:focus-visible {
+  outline: 2px solid var(--seafoam);
+  outline-offset: 3px;
+}
+
+.carousel-nav[disabled] {
+  opacity: 0.3;
+  cursor: default;
+}
+
+.carousel-nav[disabled]:hover {
+  background: rgba(255,255,255,0.08);
+  border-color: rgba(255,255,255,0.22);
+  color: var(--white);
+}
+
+.carousel-hint {
+  margin-top: 14px;
+  font-size: 12.5px;
+  letter-spacing: 0.03em;
+  color: rgba(255,255,255,0.5);
+}
+
+@media (max-width: 768px) {
+  .carousel .gallery-grid { grid-auto-columns: calc((100% - 16px) / 2); }
+  .carousel-nav { display: none; }   /* en táctil se desliza con el dedo */
+  .video-vertical { max-width: 280px; }
+}
+
+@media (max-width: 480px) {
+  .carousel .gallery-grid { grid-auto-columns: 100%; }
+}

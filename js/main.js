@@ -38,6 +38,39 @@ document.querySelectorAll('#quienes-somos video').forEach(v => {
   v.addEventListener('ended', () => v.load());
 });
 
+// Carrusel de la galería: las flechas desplazan la pista un "paso",
+// que es el ancho de una foto más el espacio entre ellas. El deslizado
+// con el dedo o el trackpad funciona solo, sin JS.
+document.querySelectorAll('.carousel').forEach(car => {
+  const pista = car.querySelector('.gallery-grid');
+  const prev = car.querySelector('.carousel-prev');
+  const next = car.querySelector('.carousel-next');
+  if (!pista || !prev || !next) return;
+
+  // El ancho de una diapositiva se deduce del total de la pista dividido
+  // por el número de fotos: medir la primera da valores erráticos mientras
+  // la sección se está abriendo y la grilla aún no asienta sus tamaños.
+  const paso = () => {
+    const n = pista.querySelectorAll('.gallery-item').length;
+    if (!n) return pista.clientWidth;
+    return pista.scrollWidth / n;
+  };
+
+  const actualizar = () => {
+    const max = pista.scrollWidth - pista.clientWidth - 2;
+    prev.disabled = pista.scrollLeft <= 2;
+    next.disabled = pista.scrollLeft >= max;
+  };
+
+  prev.addEventListener('click', () => pista.scrollBy({ left: -paso(), behavior: 'smooth' }));
+  next.addEventListener('click', () => pista.scrollBy({ left: paso(), behavior: 'smooth' }));
+  pista.addEventListener('scroll', actualizar, { passive: true });
+  window.addEventListener('resize', actualizar);
+  // La galería arranca colapsada: al abrirla cambian los anchos
+  new ResizeObserver(actualizar).observe(pista);
+  actualizar();
+});
+
 // Secciones plegables: el h2 es un botón que abre y cierra su .section-body.
 // El contenido sigue en el DOM aunque esté cerrado (buscadores y Ctrl+F lo
 // ven); solo cambia el alto. Al abrir, se marcan visibles los .reveal de

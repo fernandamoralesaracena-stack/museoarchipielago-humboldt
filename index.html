@@ -176,6 +176,19 @@
           Tu navegador no soporta la reproducción de video.
         </video>
       </div>
+
+      <div class="video-vertical reveal">
+        <video
+          controls
+          playsinline
+          preload="none"
+          poster="images/adrian-poster.webp"
+          width="608" height="1080">
+          <source src="videos/adrian-608p.mp4" type="video/mp4">
+          Tu navegador no soporta la reproducción de video.
+        </video>
+        <p class="video-pie">Adrián, sobre el proyecto del museo</p>
+      </div>
     </div>
       </div>
     </div>
@@ -230,7 +243,11 @@
         <div class="section-body-inner">
       <p class="section-intro reveal">Colonias de lobos marinos, albatros, pelícanos, guanacos del desierto costero y la caleta de Chungungo. Fotografías propias, tomadas en el archipiélago y su costa.</p>
 
-      <div class="gallery-grid">
+      <div class="carousel">
+        <button type="button" class="carousel-nav carousel-prev" aria-label="Foto anterior">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+        </button>
+        <div class="gallery-grid" role="group" aria-label="Fotografías del archipiélago">
         <div class="gallery-item reveal" onclick="openLightbox(this)">
           <img src="images/albatros.webp" alt="Albatros de ceja negra en el mar" width="1200" height="1600" loading="lazy" />
           <div class="gallery-overlay"><span class="gallery-caption">Albatros de ceja negra</span></div>
@@ -283,7 +300,12 @@
           <img src="images/caleta-chungungo.webp" alt="Caleta de Chungungo" width="1500" height="1125" loading="lazy" />
           <div class="gallery-overlay"><span class="gallery-caption">Caleta de Chungungo</span></div>
         </div>
+        </div>
+        <button type="button" class="carousel-nav carousel-next" aria-label="Foto siguiente">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+        </button>
       </div>
+      <p class="carousel-hint">Desliza para ver más · toca una foto para ampliarla</p>
         </div>
       </div>
     </section>
