@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Estación meteorológica — Museo Archipiélago de Humboldt</title>
+  <meta name="theme-color" content="#29303A">
+  <link rel="canonical" href="https://museoarchipielagodehumboldt.cl/estacion.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,400;1,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" href="/images/logo-favicon.png">
+  <meta name="description"
+  content="Datos meteorológicos de Chungungo, La Higuera: temperatura, humedad, viento y lluvia medidos por la estación del Museo Archipiélago de Humboldt. Registro abierto y descargable.">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Estación meteorológica · Museo Archipiélago de Humboldt">
+  <meta property="og:description" content="Temperatura, humedad, viento y lluvia en Chungungo, actualizados cada semana. Datos abiertos y descargables.">
+  <meta property="og:image" content="https://museoarchipielagodehumboldt.cl/images/costa-oleaje.webp">
+  <meta property="og:url" content="https://museoarchipielagodehumboldt.cl/estacion.html">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_CL">
+  <meta property="og:site_name" content="Museo Archipiélago de Humboldt">
+
+  <!-- Datos estructurados: conjunto de datos -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Dataset",
+    "name": "Observaciones meteorológicas de Chungungo, La Higuera",
+    "description": "Serie continua de temperatura, humedad, punto de rocío, viento, presión atmosférica y precipitación registrada por la estación Davis WeatherLink Live del Museo Archipiélago de Humboldt.",
+    "url": "https://museoarchipielagodehumboldt.cl/estacion.html",
+    "temporalCoverage": "2026-11/..",
+    "spatialCoverage": {
+      "@type": "Place",
+      "name": "Chungungo, La Higuera, Región de Coquimbo, Chile",
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": -29.4509444,
+        "longitude": -71.2998889
+      }
+    },
+    "variableMeasured": [
+      "temperatura del aire", "humedad relativa", "punto de rocío",
+      "velocidad y dirección del viento", "presión atmosférica", "precipitación"
+    ],
+    "creator": {
+      "@type": "Organization",
+      "name": "Fundación Museo Archipiélago de Humboldt",
+      "url": "https://museoarchipielagodehumboldt.cl/"
+    },
+    "encodingFormat": "text/csv",
+    "isAccessibleForFree": true
+  }
+  </script>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="index.html" class="nav-logo">
+      <img src="images/logo-blanco.webp" alt="Logo Museo Archipiélago de Humboldt" width="512" height="402" />
+      <span class="nav-brand">Museo Archipiélago<br>de Humboldt</span>
+    </a>
+    <button class="nav-toggle" aria-label="Abrir menú de navegación" aria-expanded="false" aria-controls="nav-links">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="index.html#importancia">Importancia</a></li>
+      <li><a href="index.html#quienes-somos">Quiénes somos</a></li>
+      <li><a href="index.html#galeria">Biodiversidad</a></li>
+      <li><a href="estacion.html" aria-current="page" class="es-activo">Estación</a></li>
+      <li><a href="index.html#visita">Contacto</a></li>
+      <li class="nav-donate-item"><a href="https://fundacionmuseo.donando.cl/" target="_blank" rel="noopener noreferrer" class="nav-donate">Hazte socio</a></li>
+    </ul>
+  </nav>
+
+  <main class="est-main">
+
+    <header class="est-encabezado">
+      <p class="est-eyebrow">Chungungo · La Higuera · Región de Coquimbo</p>
+      <h1>El clima del archipiélago, medido en Chungungo</h1>
+      <p class="est-intro">
+        En el terreno del museo hay una estación meteorológica que registra el aire
+        cada pocos minutos: temperatura, humedad, viento, presión y lluvia. Esta
+        página muestra la última semana y guarda todo lo anterior en archivos que
+        cualquiera puede descargar y usar. Los datos se actualizan solos cada lunes.
+      </p>
+      <p class="est-sello">Última actualización: <strong id="est-actualizado">—</strong></p>
+    </header>
+
+    <p id="est-aviso" class="est-aviso" hidden></p>
+
+    <!-- AHORA -->
+    <section class="est-bloque">
+      <h2>En este momento</h2>
+      <div class="est-tarjetas" id="est-ahora"></div>
+    </section>
+
+    <!-- SEMANA -->
+    <section class="est-bloque">
+      <h2>La semana</h2>
+      <p class="est-periodo" id="est-periodo"></p>
+      <div class="est-tarjetas" id="est-semana"></div>
+    </section>
+
+    <!-- GRÁFICOS -->
+    <section class="est-bloque">
+      <h2>Temperatura del aire</h2>
+      <p class="est-ayuda">Cada punto es un registro de la estación. Pasa el cursor o el dedo sobre la línea para ver el valor y la hora.</p>
+      <figure class="est-figura"><div class="est-grafico" id="est-g-temp"></div>
+        <figcaption>Temperatura en grados Celsius, últimos siete días.</figcaption></figure>
+    </section>
+
+    <section class="est-bloque">
+      <h2>Humedad relativa</h2>
+      <figure class="est-figura"><div class="est-grafico" id="est-g-hum"></div>
+        <figcaption>Humedad relativa en por ciento, últimos siete días. La camanchaca de la costa se nota en los valores altos de la madrugada.</figcaption></figure>
+    </section>
+
+    <section class="est-bloque">
+      <h2>Viento</h2>
+      <figure class="est-figura"><div class="est-grafico" id="est-g-viento"></div>
+        <figcaption>Velocidad media del viento en kilómetros por hora, últimos siete días.</figcaption></figure>
+    </section>
+
+    <section class="est-bloque">
+      <h2>Lluvia</h2>
+      <figure class="est-figura"><div class="est-grafico" id="est-g-lluvia"></div>
+        <figcaption>Precipitación acumulada por día, en milímetros.</figcaption></figure>
+    </section>
+
+    <!-- TABLA -->
+    <section class="est-bloque">
+      <h2>Los números, día por día</h2>
+      <button type="button" id="est-ver-tabla" class="est-boton" aria-expanded="false"
+              aria-controls="est-tabla-envoltura">Ver los datos en tabla</button>
+      <div id="est-tabla-envoltura" class="est-tabla-envoltura" hidden>
+        <table class="est-tabla">
+          <caption>Resumen diario de la última semana</caption>
+          <thead>
+            <tr>
+              <th scope="col">Fecha</th>
+              <th scope="col">Mín. (°C)</th>
+              <th scope="col">Máx. (°C)</th>
+              <th scope="col">Media (°C)</th>
+              <th scope="col">Humedad (%)</th>
+              <th scope="col">Viento máx. (km/h)</th>
+              <th scope="col">Lluvia (mm)</th>
+            </tr>
+          </thead>
+          <tbody id="est-tabla-cuerpo"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- FICHA Y DESCARGAS -->
+    <section class="est-bloque est-bloque--ficha">
+      <h2>Cómo se miden estos datos</h2>
+      <div class="est-ficha" id="est-ficha"></div>
+      <p class="est-ayuda">
+        Los valores llegan tal como los entrega la estación, sin corrección ni
+        relleno de huecos: si falta un registro, falta. Vienen de la API de
+        WeatherLink y se convierten a unidades métricas. La presión es la
+        reducida al nivel del mar.
+      </p>
+
+      <h3 class="est-sub">Descargar el registro completo</h3>
+      <p class="est-ayuda">Un archivo CSV por mes, con todos los registros del período.</p>
+      <div id="est-descargas"></div>
+      <p class="est-cita">
+        Para citar: Fundación Museo Archipiélago de Humboldt, <em>Observaciones
+        meteorológicas de Chungungo</em>, estación Davis WeatherLink Live.
+        Consultado en museoarchipielagodehumboldt.cl/estacion.html
+      </p>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-logo">
+      <img src="images/logo-blanco.webp" alt="Logo" width="512" height="402" loading="lazy" />
+      <span class="footer-brand">Museo Archipiélago de Humboldt</span>
+    </div>
+    <p>Chungungo · La Higuera · Región de Coquimbo<br>Protegiendo la biodiversidad, inspirando a las nuevas generaciones y conectando arte y ciencia.</p>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/estacion.js"></script>
+</body>
+</html>

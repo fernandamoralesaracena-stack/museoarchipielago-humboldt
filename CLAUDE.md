@@ -23,6 +23,19 @@ There is nothing to build, lint, or test. To preview a change, open the page in 
 - `js/main.js` — all behavior (small).
 - `images/` — all assets are `.webp` (recent history converted everything from `.jpg`; keep new images as `.webp`).
 
+## Weather station page
+
+`estacion.html` is a **second page** (the rest of the site is a single page). It
+renders the museum's Davis weather station data from JSON files in
+`data/estacion/`, which are written by `scripts/estacion_fetch.py` and committed
+weekly by `.github/workflows/estacion.yml` — never edit `data/estacion/` by hand.
+`js/estacion.js` draws the charts as hand-written SVG (no chart library): line
+charts with a hover crosshair, plus a daily bar chart for rain. Series colors are
+`--serie-aire` `#C9611C` and `--serie-agua` `#0E78AD` in `:root`; that pair was
+validated for contrast on the light surface and for color-blind separation, so if
+one changes, re-check the other. Credentials live only in the repository's GitHub
+Actions secrets (see README), never in the code.
+
 ## Conventions that span files
 
 - **Design tokens**: colors and max-width are CSS custom properties in `:root` at the top of `styles.css`. The palette follows the museum's brand sheet: `--deep`/`--ocean` `#29303A` (azul grafito, dark backgrounds), `--seafoam` `#FFBD59` (amarillo, main accent — name kept for historical reasons), `--naranja` `#F58235`, `--verde` `#A5C886`, plus `--accent-ink` `#9A6413` (darkened yellow, used wherever the accent must sit as text on a light background — the raw yellow fails contrast there). Also `--bg`, `--sand`, `--text`, `--muted`, `--maxw 1140px`. Use these vars rather than hardcoding hex values. Note: `js/main.js` hardcodes the active-nav color `#FFBD59` — if `--seafoam` changes, update it there too.

@@ -1,0 +1,51 @@
+name: Datos de la estación meteorológica
+
+# Corre todos los lunes a las 07:23 de Chile y deja los datos nuevos en el
+# repositorio. También se puede correr a mano desde la pestaña Actions
+# (botón "Run workflow"), por ejemplo para recuperar más historia.
+
+on:
+  schedule:
+    - cron: "23 11 * * 1"
+  workflow_dispatch:
+    inputs:
+      dias:
+        description: "Días de historia a descargar"
+        required: false
+        default: "8"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: estacion-datos
+  cancel-in-progress: false
+
+jobs:
+  actualizar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Descargar datos de WeatherLink
+        env:
+          WEATHERLINK_API_KEY: ${{ secrets.WEATHERLINK_API_KEY }}
+          WEATHERLINK_API_SECRET: ${{ secrets.WEATHERLINK_API_SECRET }}
+          WEATHERLINK_STATION_ID: ${{ secrets.WEATHERLINK_STATION_ID }}
+        run: python3 scripts/estacion_fetch.py --dias "${{ github.event.inputs.dias || 8 }}"
+
+      - name: Guardar los cambios
+        run: |
+          git config user.name "estacion-museo[bot]"
+          git config user.email "estacion-museo@users.noreply.github.com"
+          git add data/estacion
+          if git diff --staged --quiet; then
+            echo "Sin datos nuevos, no hay nada que guardar."
+          else
+            git commit -m "Datos de la estación: $(date -u +%Y-%m-%d)"
+            git push
+          fi

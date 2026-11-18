@@ -1152,3 +1152,234 @@ footer p {
 @media (max-width: 480px) {
   .carousel .gallery-grid { grid-auto-columns: 100%; }
 }
+
+/* ===== ESTACIÓN METEOROLÓGICA (estacion.html) =====
+   Colores de las series: --serie-aire (naranja de marca oscurecido) y
+   --serie-agua (azul mar). El par está validado para contraste sobre el
+   fondo claro y para daltonismo; si se cambia uno, revisar el otro. */
+:root {
+  --serie-aire: #C9611C;
+  --serie-agua: #0E78AD;
+}
+
+.est-main {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 120px 24px 80px;
+}
+
+.est-encabezado { max-width: 760px; margin-bottom: 48px; }
+.est-eyebrow {
+  color: var(--accent-ink);
+  font-weight: 700;
+  font-size: .82rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+}
+.est-encabezado h1 {
+  font-size: clamp(1.9rem, 4.2vw, 2.9rem);
+  font-weight: 800;
+  letter-spacing: -.02em;
+  line-height: 1.15;
+  margin-bottom: 18px;
+}
+.est-intro { font-size: 1.08rem; color: var(--muted); font-weight: 300; }
+.est-sello { margin-top: 18px; font-size: .9rem; color: var(--muted); }
+.est-sello strong { color: var(--text); font-weight: 600; }
+
+.est-aviso {
+  background: var(--sand);
+  border-left: 4px solid var(--seafoam);
+  padding: 16px 20px;
+  border-radius: 6px;
+  color: var(--text);
+  margin-bottom: 40px;
+}
+
+.est-bloque { margin-bottom: 56px; }
+.est-bloque h2 {
+  font-size: 1.32rem;
+  font-weight: 700;
+  letter-spacing: -.01em;
+  margin-bottom: 8px;
+}
+.est-sub { font-size: 1.05rem; font-weight: 700; margin: 34px 0 6px; }
+.est-ayuda, .est-periodo {
+  color: var(--muted);
+  font-size: .92rem;
+  font-weight: 300;
+  margin-bottom: 18px;
+  max-width: 68ch;
+}
+
+/* Tarjetas de valores */
+.est-tarjetas {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+  gap: 14px;
+  margin-top: 6px;
+}
+.est-tarjeta {
+  background: var(--sand);
+  border: 1px solid rgba(41,48,58,.08);
+  border-radius: 10px;
+  padding: 18px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.est-tarjeta-et {
+  font-size: .78rem;
+  font-weight: 600;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.est-tarjeta-val {
+  font-size: 1.85rem;
+  font-weight: 700;
+  letter-spacing: -.02em;
+  line-height: 1.1;
+}
+.est-tarjeta-det { font-size: .85rem; color: var(--muted); font-weight: 300; }
+
+/* Gráficos */
+.est-figura { margin: 0; }
+.est-grafico {
+  position: relative;
+  background: var(--sand);
+  border: 1px solid rgba(41,48,58,.08);
+  border-radius: 10px;
+  padding: 12px 8px 4px;
+}
+.est-svg { display: block; width: 100%; height: auto; font-family: 'Open Sans', sans-serif; }
+.est-figura figcaption {
+  font-size: .85rem;
+  color: var(--muted);
+  font-weight: 300;
+  margin-top: 10px;
+  max-width: 68ch;
+}
+.est-grid { stroke: rgba(41,48,58,.10); stroke-width: 1; }
+.est-eje { stroke: rgba(41,48,58,.28); stroke-width: 1; }
+.est-tick { fill: var(--muted); font-size: 12px; font-weight: 400; }
+.est-valor { fill: var(--text); font-size: 12px; font-weight: 600; }
+.est-nota-svg { fill: var(--muted); font-size: 14px; font-weight: 300; }
+.est-vacio { color: var(--muted); font-weight: 300; padding: 28px 12px; }
+.est-captura { cursor: crosshair; }
+
+.est-globo {
+  position: absolute;
+  transform: translate(-50%, -100%);
+  background: var(--deep);
+  color: var(--white);
+  padding: 7px 11px;
+  border-radius: 7px;
+  font-size: .82rem;
+  line-height: 1.35;
+  pointer-events: none;
+  white-space: nowrap;
+  box-shadow: 0 6px 18px rgba(41,48,58,.22);
+  z-index: 5;
+}
+.est-globo strong { display: block; font-weight: 700; }
+.est-globo span { color: rgba(255,255,255,.72); font-weight: 300; }
+
+/* Tabla */
+.est-boton {
+  font-family: inherit;
+  font-size: .9rem;
+  font-weight: 600;
+  color: var(--deep);
+  background: transparent;
+  border: 1.5px solid rgba(41,48,58,.25);
+  border-radius: 999px;
+  padding: 9px 20px;
+  cursor: pointer;
+  transition: border-color .2s, background .2s;
+}
+.est-boton:hover { border-color: var(--accent-ink); background: var(--sand); }
+.est-tabla-envoltura { overflow-x: auto; margin-top: 20px; }
+.est-tabla {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: .9rem;
+  min-width: 620px;
+}
+.est-tabla caption {
+  text-align: left;
+  color: var(--muted);
+  font-size: .85rem;
+  font-weight: 300;
+  padding-bottom: 10px;
+}
+.est-tabla th, .est-tabla td {
+  padding: 9px 12px;
+  text-align: right;
+  border-bottom: 1px solid rgba(41,48,58,.1);
+}
+.est-tabla thead th {
+  text-align: right;
+  font-weight: 600;
+  font-size: .8rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: .04em;
+}
+.est-tabla tbody th { text-align: left; font-weight: 600; }
+
+/* Ficha técnica y descargas */
+.est-bloque--ficha {
+  background: var(--sand);
+  border-radius: 12px;
+  padding: 34px 32px;
+}
+.est-ficha dl {
+  display: grid;
+  grid-template-columns: minmax(140px, 200px) 1fr;
+  gap: 8px 20px;
+  font-size: .92rem;
+  margin-bottom: 20px;
+}
+.est-ficha dt { font-weight: 600; color: var(--muted); }
+.est-ficha dd { font-weight: 300; }
+.est-archivos { list-style: none; display: flex; flex-wrap: wrap; gap: 10px; }
+.est-archivos a {
+  display: inline-block;
+  background: var(--white);
+  border: 1px solid rgba(41,48,58,.14);
+  border-radius: 8px;
+  padding: 8px 16px;
+  font-size: .88rem;
+  font-weight: 600;
+  color: var(--accent-ink);
+  text-decoration: none;
+}
+.est-archivos a:hover { border-color: var(--accent-ink); }
+.est-cita {
+  margin-top: 26px;
+  font-size: .85rem;
+  color: var(--muted);
+  font-weight: 300;
+  max-width: 68ch;
+}
+
+.nav-links a.es-activo { color: var(--seafoam); }
+
+@media (max-width: 768px) {
+  .est-main { padding: 100px 18px 60px; }
+  .est-bloque { margin-bottom: 44px; }
+  .est-bloque--ficha { padding: 26px 20px; }
+  .est-ficha dl { grid-template-columns: 1fr; gap: 2px; }
+  .est-ficha dd { margin-bottom: 10px; }
+  .est-tarjeta-val { font-size: 1.6rem; }
+}
+
+/* En pantallas angostas el SVG se reduce mucho: los rótulos van en unidades
+   del viewBox, así que se agrandan ahí para que sigan siendo legibles. */
+@media (max-width: 620px) {
+  .est-tick { font-size: 21px; }
+  .est-valor { font-size: 21px; }
+  .est-nota-svg { font-size: 24px; }
+}
