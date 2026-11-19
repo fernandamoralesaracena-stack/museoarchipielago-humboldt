@@ -18,7 +18,13 @@ There is nothing to build, lint, or test. To preview a change, open the page in 
 
 ## Structure
 
-- `index.html` — the entire page. All sections live here as `<section id="...">` blocks (hero, importancia, quienes-somos, arte, galeria, impacto, actividades, visita; the hero has no `id`) anchored to the nav links.
+- `index.html` — the entire page. All sections live here as `<section id="...">` blocks, in this order: hero (no `id`), the donation strip, the weather-station strip (`#estacion-resumen`), `#importancia`, the panorama image, `#galeria`, `#columna`, `#quienes-somos`, `#impacto`, `#visita`, `#instagram`. Only four of them are in the nav (`#quienes-somos`, `#visita`, `estacion.html`, `#galeria`) plus the "Hazte socio" CTA.
+  - `#importancia` and `#impacto` are collapsible (`.section-toggle` + `.section-body`); `#galeria` is deliberately **not** collapsible (`.section-estatica`) so the carousel is always visible. `#columna` and `#instagram` are plain sections.
+  - `#importancia` carries running prose (`.prosa`), not cards — it absorbed the former `#arte` section ("Por qué un museo de arte") as an `<h3>`. The former `#actividades` ("Qué habrá en el museo") was removed.
+  - `#estacion-resumen` is a compact strip under the hero. `js/main.js` fetches `data/estacion/resumen.json` (the same file `estacion.html` uses) and fills the `[data-campo]` slots; on failure it leaves dashes and the button to `estacion.html` still works.
+  - `#impacto` holds the photo-submission invite (`.fotos-invite`), whose button points at the public Tally form `https://tally.so/r/1W4D04`.
+  - `#columna` is the fortnightly opinion column: currently one placeholder `.columna-card`. New entries = copy that block.
+  - `#instagram` embeds one post via Instagram's official `embed.js`; if the script is blocked the `blockquote`'s link is styled as a fallback button.
 - `css/styles.css` — all styling, organized by `/* ===== SECTION ===== */` comment banners that mirror the HTML sections.
 - `js/main.js` — all behavior (small).
 - `videos/` — video files used by `#quienes-somos`.

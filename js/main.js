@@ -128,3 +128,34 @@ const observer = new IntersectionObserver((entries) => {
   });
 }, { threshold: 0.4 });
 sections.forEach(s => observer.observe(s));
+
+// Resumen de la estación meteorológica en la portada.
+// Lee el mismo data/estacion/resumen.json que alimenta estacion.html (lo escribe
+// scripts/estacion_fetch.py vía la GitHub Action semanal). Si falla, la tira
+// queda con guiones y el botón a estacion.html sigue funcionando.
+(function () {
+  const caja = document.getElementById('estacion-strip-datos');
+  const pie = document.getElementById('estacion-strip-ts');
+  if (!caja) return;
+
+  const poner = (campo, valor) => {
+    const dd = caja.querySelector('[data-campo="' + campo + '"]');
+    if (dd) dd.textContent = valor;
+  };
+
+  fetch('data/estacion/resumen.json', { cache: 'no-store' })
+    .then(r => { if (!r.ok) throw new Error('sin datos'); return r.json(); })
+    .then(d => {
+      const a = d.actual || {};
+      poner('temp', a.temp_c != null ? a.temp_c.toFixed(1) + ' °C' : '—');
+      poner('humedad', a.humedad_pct != null ? Math.round(a.humedad_pct) + ' %' : '—');
+      poner('viento', a.viento_kmh != null ? Math.round(a.viento_kmh) + ' km/h' : '—');
+      poner('presion', a.presion_hpa != null ? Math.round(a.presion_hpa) + ' hPa' : '—');
+      pie.textContent = a.fecha_hora_local
+        ? 'Última medición: ' + a.fecha_hora_local + ' h'
+        : 'Datos de la estación del museo';
+    })
+    .catch(() => {
+      pie.textContent = 'Datos no disponibles por ahora';
+    });
+})();

@@ -1383,3 +1383,204 @@ footer p {
   .est-valor { font-size: 21px; }
   .est-nota-svg { font-size: 24px; }
 }
+
+/* ===== RESUMEN DE LA ESTACIÓN EN PORTADA ===== */
+/* Tira compacta bajo el hero: datos actuales de la estación Davis de Chungungo
+   leídos de data/estacion/resumen.json (mismo archivo que usa estacion.html). */
+.estacion-strip {
+  background: var(--sand);
+  border-top: 1px solid rgba(41,48,58,0.08);
+  border-bottom: 1px solid rgba(41,48,58,0.08);
+  padding: 20px 0;
+}
+
+.estacion-strip-inner {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  flex-wrap: wrap;
+}
+
+.estacion-strip-head { flex: 0 0 auto; }
+
+.estacion-strip-label {
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent-ink);
+}
+
+.estacion-strip-sub {
+  font-size: 0.82rem;
+  color: var(--muted);
+  margin-top: 2px;
+}
+
+.estacion-strip-datos {
+  display: flex;
+  gap: 26px;
+  flex-wrap: wrap;
+  flex: 1 1 auto;
+}
+
+.estacion-dato dt {
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  font-weight: 600;
+}
+
+.estacion-dato dd {
+  font-size: 1.32rem;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+
+.estacion-strip-cta {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 11px 20px;
+  border-radius: 999px;
+  background: var(--deep);
+  color: var(--white);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.estacion-strip-cta:hover { background: var(--ocean-light); transform: translateY(-1px); }
+.estacion-strip-cta:focus-visible { outline: 2px solid var(--accent-ink); outline-offset: 3px; }
+
+/* ===== PÁRRAFOS DE TEXTO CORRIDO (reemplazan tarjetas) ===== */
+.prosa { max-width: 760px; }
+.prosa p { margin-bottom: 16px; color: var(--text); }
+.prosa p:last-child { margin-bottom: 0; }
+
+.prosa h3 {
+  font-size: 1.12rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  margin: 26px 0 10px;
+}
+
+/* Sección no plegable (la galería): mismo ritmo vertical que .section-body abierto */
+.section-estatica { padding-top: 28px; }
+
+/* ===== COLUMNA QUINCENAL ===== */
+.section--columna { background: var(--sand); }
+
+.columna-card {
+  max-width: 760px;
+  margin-top: 28px;
+  padding: 30px 32px;
+  background: var(--white);
+  border-radius: 14px;
+  border-left: 4px solid var(--seafoam);
+  box-shadow: 0 2px 18px rgba(41,48,58,0.06);
+}
+
+.columna-meta {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  flex-wrap: wrap;
+  font-size: 0.74rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--accent-ink);
+  margin-bottom: 10px;
+}
+
+.columna-autor { color: var(--muted); font-weight: 600; }
+
+.columna-titulo {
+  font-size: 1.4rem;
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  margin-bottom: 10px;
+}
+
+.columna-bajada { color: var(--muted); }
+
+/* ===== INVITACIÓN A ENVIAR FOTOS ===== */
+.fotos-invite {
+  margin-top: 30px;
+  max-width: 760px;
+  padding: 28px 30px;
+  border-radius: 14px;
+  background: rgba(255,189,89,0.14);
+  border: 1px solid rgba(255,189,89,0.45);
+}
+
+.fotos-invite h3 {
+  font-size: 1.14rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.fotos-invite p { color: var(--text); margin-bottom: 18px; }
+
+.fotos-invite-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 13px 24px;
+  border-radius: 999px;
+  background: var(--deep);
+  color: var(--white);
+  text-decoration: none;
+  font-weight: 700;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.fotos-invite-cta:hover { background: var(--ocean-light); transform: translateY(-1px); }
+.fotos-invite-cta:focus-visible { outline: 2px solid var(--accent-ink); outline-offset: 3px; }
+
+/* ===== INSTAGRAM ===== */
+.instagram-wrap {
+  margin-top: 28px;
+  display: flex;
+  justify-content: center;
+}
+
+@media (max-width: 768px) {
+  .estacion-strip-inner { gap: 18px; }
+  .estacion-strip-datos { gap: 18px 22px; width: 100%; }
+  .estacion-strip-cta { width: 100%; justify-content: center; }
+  .columna-card { padding: 24px 22px; }
+  .fotos-invite { padding: 22px 20px; }
+  .fotos-invite-cta { width: 100%; justify-content: center; }
+}
+
+/* Respaldo visual del embed de Instagram: si embed.js no carga (bloqueadores,
+   sin conexión), el blockquote queda como una tarjeta con enlace legible. */
+.instagram-wrap .instagram-media {
+  border-radius: 14px !important;
+  padding: 26px 24px;
+  text-align: center;
+}
+
+.instagram-wrap .instagram-media > a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 22px;
+  border-radius: 999px;
+  background: var(--deep);
+  color: var(--white);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.instagram-wrap .instagram-media > a:hover { background: var(--ocean-light); }
+
+/* Cuando el script sí carga, Instagram reemplaza el contenido por un iframe
+   y el enlace de respaldo deja de existir: no hay doble botón. */
