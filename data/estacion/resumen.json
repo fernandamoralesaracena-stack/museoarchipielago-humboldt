@@ -1,0 +1,122 @@
+{
+ "actualizado_utc": "2026-11-19T17:57:42+00:00",
+ "actualizado_local": "19-11-2026 14:57",
+ "estacion": {
+  "nombre": "Museo Archi",
+  "id": 248285,
+  "latitud": -29.446938,
+  "longitud": -71.30341,
+  "altitud_m": 16.1,
+  "intervalo_registro_min": 15
+ },
+ "actual": {
+  "ts_utc": 1795110945,
+  "fecha_hora_local": "2026-11-19 14:55",
+  "temp_c": 19.78,
+  "humedad_pct": 75.3,
+  "punto_rocio_c": 15.28,
+  "viento_kmh": 7.34,
+  "rafaga_kmh": 20.92,
+  "viento_dir_grados": 148,
+  "presion_hpa": 1016.46
+ },
+ "semana": {
+  "desde": "2026-11-12",
+  "hasta": "2026-11-19",
+  "registros": 672,
+  "temp_max_c": 23.11,
+  "temp_min_c": 15.94,
+  "temp_media_c": 19.1,
+  "humedad_media_pct": 78.8,
+  "viento_max_kmh": 32.99,
+  "viento_medio_kmh": 5.7,
+  "lluvia_total_mm": 0,
+  "viento_predominante": "S"
+ },
+ "dias": [
+  {
+   "fecha": "2026-11-12",
+   "temp_max_c": 20.33,
+   "temp_min_c": 17.67,
+   "temp_media_c": 18.4,
+   "humedad_media_pct": 86.2,
+   "viento_max_kmh": 20.21,
+   "lluvia_mm": 0
+  },
+  {
+   "fecha": "2026-11-13",
+   "temp_max_c": 20.0,
+   "temp_min_c": 17.44,
+   "temp_media_c": 18.4,
+   "humedad_media_pct": 86.6,
+   "viento_max_kmh": 22.32,
+   "lluvia_mm": 0
+  },
+  {
+   "fecha": "2026-11-14",
+   "temp_max_c": 23.11,
+   "temp_min_c": 17.72,
+   "temp_media_c": 19.6,
+   "humedad_media_pct": 78.8,
+   "viento_max_kmh": 15.88,
+   "lluvia_mm": 0
+  },
+  {
+   "fecha": "2026-11-15",
+   "temp_max_c": 21.56,
+   "temp_min_c": 17.72,
+   "temp_media_c": 19.4,
+   "humedad_media_pct": 75.0,
+   "viento_max_kmh": 22.93,
+   "lluvia_mm": 0
+  },
+  {
+   "fecha": "2026-11-16",
+   "temp_max_c": 21.28,
+   "temp_min_c": 15.94,
+   "temp_media_c": 18.9,
+   "humedad_media_pct": 76.0,
+   "viento_max_kmh": 20.71,
+   "lluvia_mm": 0
+  },
+  {
+   "fecha": "2026-11-17",
+   "temp_max_c": 21.61,
+   "temp_min_c": 18.28,
+   "temp_media_c": 19.5,
+   "humedad_media_pct": 74.7,
+   "viento_max_kmh": 28.45,
+   "lluvia_mm": 0
+  },
+  {
+   "fecha": "2026-11-18",
+   "temp_max_c": 21.67,
+   "temp_min_c": 16.5,
+   "temp_media_c": 19.0,
+   "humedad_media_pct": 77.1,
+   "viento_max_kmh": 32.99,
+   "lluvia_mm": 0
+  },
+  {
+   "fecha": "2026-11-19",
+   "temp_max_c": 20.17,
+   "temp_min_c": 18.06,
+   "temp_media_c": 18.9,
+   "humedad_media_pct": 81.5,
+   "viento_max_kmh": 21.21,
+   "lluvia_mm": 0
+  }
+ ],
+ "archivos_historico": [
+  "2026-10.csv",
+  "2026-11.csv"
+ ],
+ "fuente": "Estación Davis WeatherLink Live del Museo Archipiélago de Humboldt",
+ "unidades": {
+  "temperatura": "°C",
+  "humedad": "%",
+  "viento": "km/h",
+  "presion": "hPa",
+  "lluvia": "mm"
+ }
+}
