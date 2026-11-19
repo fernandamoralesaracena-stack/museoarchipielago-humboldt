@@ -22,7 +22,7 @@ Sitio estático sin framework ni proceso de compilación:
 - HTML5 (`index.html`)
 - CSS con variables personalizadas (`css/styles.css`)
 - JavaScript puro (`js/main.js`) para la galería tipo *lightbox* y el resaltado de navegación al hacer scroll
-- Tipografías [Playfair Display](https://fonts.google.com/specimen/Playfair+Display) y [Source Sans 3](https://fonts.google.com/specimen/Source+Sans+3) (Google Fonts)
+- Tipografía [Open Sans](https://fonts.google.com/specimen/Open+Sans) (Google Fonts), según la ficha técnica de marca
 - Imágenes en formato `.webp`
 
 ## Estructura
@@ -44,6 +44,36 @@ No requiere instalación ni compilación. Abre `index.html` en el navegador, o s
 python3 -m http.server 8000
 # Abre http://localhost:8000
 ```
+
+## Estación meteorológica
+
+La página `estacion.html` publica los datos de la estación Davis WeatherLink Live
+instalada en el terreno del museo: temperatura, humedad, punto de rocío, viento,
+presión y lluvia. Muestra la última semana en gráficos y deja el registro completo
+en archivos CSV descargables, uno por mes.
+
+Los datos se actualizan solos: la rutina `.github/workflows/estacion.yml` corre
+todos los lunes, consulta la API v2 de WeatherLink con `scripts/estacion_fetch.py`
+y guarda lo nuevo en `data/estacion/`. También se puede correr a mano desde la
+pestaña **Actions** del repositorio (útil para recuperar más historia: el campo
+"días" acepta, por ejemplo, 90).
+
+Para que funcione hay que cargar tres *secrets* en el repositorio
+(Settings → Secrets and variables → Actions):
+
+| Secret | Qué es |
+|---|---|
+| `WEATHERLINK_API_KEY` | clave de la API v2, se genera en weatherlink.com/account |
+| `WEATHERLINK_API_SECRET` | el secreto que acompaña a esa clave |
+| `WEATHERLINK_STATION_ID` | opcional; solo si la cuenta tiene más de una estación |
+
+Las credenciales nunca van en el código ni en los archivos del sitio: el script
+las lee del entorno. Si el secreto se filtra, hay que regenerarlo desde la misma
+página de cuenta de WeatherLink y actualizar el *secret*.
+
+La API entrega los valores en unidades imperiales; el script los convierte a
+grados Celsius, km/h y hPa. Los datos se publican tal como los entrega la
+estación, sin corregir ni rellenar huecos.
 
 ## Contacto
 
