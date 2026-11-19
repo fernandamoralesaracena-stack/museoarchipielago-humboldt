@@ -18,10 +18,10 @@ There is nothing to build, lint, or test. To preview a change, open the page in 
 
 ## Structure
 
-- `index.html` — the entire page. All sections live here as `<section id="...">` blocks, in this order: hero (no `id`), the donation strip, the weather-station strip (`#estacion-resumen`), `#importancia`, the panorama image, `#galeria`, `#columna`, `#quienes-somos`, `#impacto`, `#visita`, `#instagram`. Only four of them are in the nav (`#quienes-somos`, `#visita`, `estacion.html`, `#galeria`) plus the "Hazte socio" CTA.
+- `index.html` — the entire page. All sections live here as `<section id="...">` blocks, in this order: hero (no `id`), the donation strip, the weather-station strip (`#estacion-resumen`), `#importancia`, `#galeria`, `#columna`, `#quienes-somos`, `#impacto`, `#visita`, `#instagram`. Only four of them are in the nav (`#quienes-somos`, `#visita`, `estacion.html`, `#galeria`) plus the "Hazte socio" CTA.
   - `#importancia` and `#impacto` are collapsible (`.section-toggle` + `.section-body`); `#galeria` is deliberately **not** collapsible (`.section-estatica`) so the carousel is always visible. `#columna` and `#instagram` are plain sections.
   - `#importancia` carries running prose (`.prosa`), not cards — it absorbed the former `#arte` section ("Por qué un museo de arte") as an `<h3>`. The former `#actividades` ("Qué habrá en el museo") was removed.
-  - `#estacion-resumen` is a compact strip under the hero. `js/main.js` fetches `data/estacion/resumen.json` (the same file `estacion.html` uses) and fills the `[data-campo]` slots; on failure it leaves dashes and the button to `estacion.html` still works.
+  - `#estacion-resumen` is a compact strip under the hero, on the dark `--deep` background (it sits right under the yellow donation strip, so the contrast keeps the two apart — don't lighten it without rechecking that pairing). `js/main.js` fetches `data/estacion/resumen.json` (the same file `estacion.html` uses) and fills the `[data-campo]` slots; on failure it leaves dashes and the button to `estacion.html` still works.
   - `#impacto` holds the photo-submission invite (`.fotos-invite`), whose button points at the public Tally form `https://tally.so/r/1W4D04`.
   - `#columna` is the fortnightly opinion column: currently one placeholder `.columna-card`. New entries = copy that block.
   - `#instagram` embeds one post via Instagram's official `embed.js`; if the script is blocked the `blockquote`'s link is styled as a fallback button.
@@ -29,6 +29,20 @@ There is nothing to build, lint, or test. To preview a change, open the page in 
 - `js/main.js` — all behavior (small).
 - `videos/` — video files used by `#quienes-somos`.
 - `images/` — all assets are `.webp` (recent history converted everything from `.jpg`; keep new images as `.webp`).
+
+## Photo gallery page
+
+`galeria.html` is a third page: the full photo mosaic, reached from the nav
+("Foto galería") and from the "Ver galería completa" button under the home
+carousel. Layout is CSS `columns` (3 → 2 → 1), so photos keep their natural
+aspect ratio and are never cropped. Each item is a `<figure class="mosaico-item"
+onclick="openLightbox(this)">`; it reuses the same lightbox and `main.js` as the
+home page. Adding a photo = copy one `.mosaico-item` block. A photo that is not
+the museum's own carries its credit in `.mosaico-credito` (currently only the
+albatross, by Tomás, a fisherman from Chungungo). The page ends with the same
+Tally photo-submission invite as `#impacto`. The home carousel and this page
+currently hold the same images; the plan is for the mosaic to be fed from the
+"WEB" subfolder of the museum's Drive folder "FOTOS PROPIOS".
 
 ## Weather station page
 
